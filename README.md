@@ -1,50 +1,31 @@
-#ver 3
-import random
-print('Добро пожаловать в числовую угадайку')
-def is_valid(n):    # проверка на соответствие введенного значения условию
-    return n.isdigit() and 1 <= int(n) <= 100
-
-def input_num():    #ввод данных
+from random import randint
+answers = ['Бесспорно', 'Предрешено', 'Никаких сомнений', 'Определённо да', 'Можешь быть уверен в этом', 'Мне кажется - да', 'Вероятнее всего', 'Хорошие перспективы', 'Знаки говорят - да', 'Да', 'Пока неясно, попробуй снова', 'Спроси позже', 'Лучше не рассказывать', 'Сейчас нельзя предсказать', 'Сконцентрируйся и спроси опять', 'Даже не думай', 'Мой ответ - нет', 'По моим данным - нет', 'Перспективы не очень хорошие', 'Весьма сомнительно']
+def print_name(name):
+  if name:
+    print('Привет, ', name.capitalize(), '!', sep = '' )
+  else: 
+    print('Тогда просто привет!')
+def ans():
+    ind = randint(0, len(answers) - 1)
+    print(answers[ind])
+def continue_game():   
+  ans = input('Хотите задать еще один вопрос ("д"/"н")?' '\n')
   while True:
-    guess = input()
-    if is_valid(guess) == False:
-      print('А может быть все-таки введем целое число от 1 до 100?')
-    else:
-      return int(guess)
-
-def compare_num(left_num, right_num):    # Сравнение введенного значения с загаданным
-  num = random.randint(left_num, right_num)
-  total = 0
-  while True: 
-    n = input_num()
-    total += 1
-    if n > num:
-      print('Ваше число больше загаданного, попробуйте еще разок')
-    elif n < num:
-      print('Ваше число меньше загаданного, попробуйте еще разок')
-    else:
-      print('Вы угадали число за', total, 'попыток. Поздравляем!')
-      break
-
-def continue_game():    # Предложение продолжить игру
-  ans = input('Хотите продолжить ("д"/"н")?')
-  while True:
-    if ans in ('y', 'д', 'n', 'н'):
+    if ans in ('y', 'д', 'Д', 'Y'):
       return True
     else:
       print('До скорых встреч!')
       return False
-
-def game():   # Запуск игры
+def magic_ball():
   while True:
-    print('Укажите диапазон угадаваемых чисел ( от 1 до 100): ')
-    x, y = input_num(), input_num()
-    if x > y:
-      x, y = y, x
-    print('Попоробуйте угадать число в диапазоне от', x, 'до', y)
-    compare_num(x, y)
+    que = input('На какой вопрос ты хотел бы получить ответ?' '\n')
+    ans()
     if continue_game():
       continue
-    else: 
-      break 
-game()
+    else:
+      break
+print('Привет Мир, я магический шар, и я знаю ответ на любой твой вопрос.')
+nm = input('Как я могу к тебе обращаться?' '\n')
+print_name(nm)
+magic_ball()
+
