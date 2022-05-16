@@ -36,3 +36,11 @@ def ign_rep():
     return True 
   else:
     return False
+if ign_num():
+  chars += digits
+if ign_upp_lett():
+  chars += uppercase_letters
+if ign_low_lett():
+  chars += lowercase_letters
+if ign_symb():
+  chars += punctuation
