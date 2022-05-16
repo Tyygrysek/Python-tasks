@@ -44,3 +44,14 @@ if ign_low_lett():
   chars += lowercase_letters
 if ign_symb():
   chars += punctuation
+if ign_rep():
+  for c in 'il1Lo0O':
+    chars = chars.replace(c, '')
+def generate_password(length, chars):
+  for i in range(num_of_passw):
+    passw = ''
+    for j in range(length):
+      passw += chars[randint(1, len(chars) - 1)]
+    print(passw)
+
+generate_password(len_of_passw, chars)
