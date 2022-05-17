@@ -1,21 +1,19 @@
-#Числовая угадайка
-from random import randint
-num = randint(1, 100)    #случайно загаданное число
-print('Добро пожаловать в числовую угадайку')
-def is_valid(s):    #Проверка на правильность введеного значения
-    return s.isdigit() and 1 <= int(s) <= 100 #явялется ли вводимое значение числом и находится ли оно в диапазоне от 1 до 100
-while True:
-  n = input('Введите предполагаемое число: ')
-  if is_valid(n) == False:
-    print('А может быть все-таки введем целое число от 1 до 100?')
-    continue
-  else:
-    n = int(n)
-  if n < num:
-    print('Ваше число меньше загаданного, попробуйте еще разок')
-  elif n > num:
-    print('Ваше число больше загаданного, попробуйте еще разок')
-  else:
-    print('Вы угадали, поздравляем!')
-    print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
-    break
+'''moove = input('В каком напрвлении проведем шифрование: left = налево, right = направо' '\n')
+leng = input('Выберете язык, на котором будет необходимо зашифровать текст: ru = русский, en = английский' '\n')'''
+k = int(input('Укажите шаг сдвига:' '\n'))
+phrase = input('Введите фразу, которую необходимо шифровать / дешифровать:' '\n')
+def ru_phrase():
+  spisok = ''
+  for i in range(len(phrase)):
+    let_ind = ord(phrase[i])
+    if phrase[i].isalpha() == True:
+      if ord(phrase[i].lower()) + k > 1103:
+        let_ind = let_ind - 32 + k  
+        spisok += chr(let_ind)
+      else:
+        let = chr(ord(phrase[i]) + k)
+        spisok += let     
+    else:
+      spisok += phrase[i]
+  print(spisok)
+ru_phrase()
