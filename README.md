@@ -88,9 +88,16 @@ def play(word):
   while tries != 0:
     print(display_hangman(tries))
     print(word_completion)
-    guess = input('Введите букву или слово целиком').upper()
+    guess = input('Введите букву или слово целиком' '\n').upper()
     if len(guess) > 1:
       guessed_words.append(guess)
+      if guess == get_word:
+        print('You Win!')
     else:
       guessed_letters.append(guess)
+      if guess in get_word() == True:
+        print('Вы отгадали одну букву')
+      else:
+        tries -= 1
+      
 play(get_word())
